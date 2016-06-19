@@ -33,6 +33,7 @@ public class TestProducer {
       
       //Set acknowledgements for producer requests.      
       props.put("acks", "all");
+      props.put("group.id", "test");
       
       //If the request fails, the producer can automatically retry,
       props.put("retries", 0);
@@ -54,7 +55,7 @@ public class TestProducer {
       
       Producer<String, String> producer = new KafkaProducer<String, String>(props);
             
-      for(int i = 0; i < 10; i++)
+      for(int i = 20; i < 88; i++)
          producer.send(new ProducerRecord<String, String>(topicName, 
             Integer.toString(i), Integer.toString(i)));
                System.out.println("Message sent successfully");
